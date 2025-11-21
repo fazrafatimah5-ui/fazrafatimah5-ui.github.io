@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portofolio Mahasiswa - Fazra Fatimah Azahra</title>
+    <!-- Memuat Tailwind CSS untuk styling responsif -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Menggunakan font Inter -->
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+        
+        /* Ganti latar belakang utama menjadi gelap untuk kesan elegan */
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #111827; /* Darkest Gray/Black */
+            color: #d1d5db; /* Default light text color */
+        }
+        /* Custom CSS untuk transisi navigasi (simulasi SPA) */
+        .page-section {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.6s ease-in-out;
+            min-height: 75vh; /* Memastikan ruang pandang yang cukup */
+        }
+        .page-section.active {
+            display: block;
+            opacity: 1;
+        }
+        /* Aksen Teal untuk tautan navigasi aktif */
+        .nav-link.active {
+            border-bottom: 3px solid #2dd4bf; /* Teal-400 */
+            color: #2dd4bf;
+            font-weight: 600;
+        }
+        /* Custom styling untuk formulir kontak */
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #374151; /* Border gelap */
+            background-color: #374151; /* Input gelap */
+            color: white;
+            border-radius: 0.75rem; /* Lebih membulat */
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        /* Fokus pada input menggunakan aksen Teal */
+        .form-input:focus {
+            border-color: #2dd4bf; /* Teal-400 */
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.4);
+        }
+
+        /* Styling untuk Modal Notifikasi */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.3s ease-in-out, visibility 0.3s;
+            z-index: 1000;
+        }
+        .modal-overlay.open {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            transform: scale(0.9);
+            transition: transform 0.3s ease-in-out;
+        }
+        .modal-overlay.open .modal-content {
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body class="selection:bg-teal-500 selection:text-black">
+
+    <!-- Header & Navigasi - Tema Gelap -->
+    <header class="bg-gray-900/90 backdrop-blur-sm shadow-xl sticky top-0 z-50 border-b border-teal-400/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <!-- Logo/Nama - Aksen Teal -->
+                <div class="flex-shrink-0">
+                    <span class="text-3xl font-extrabold text-teal-400 tracking-wider">Fazra Fatimah Azahra</span>
+                </div>
+                <!-- Navigasi Utama -->
+                <nav class="flex space-x-6 sm:space-x-10">
+                    <a href="#home" class="nav-link text-gray-300 hover:text-teal-400 py-7 transition duration-300 ease-in-out" onclick="navigate('home')">Home</a>
+                    <a href="#about" class="nav-link text-gray-300 hover:text-teal-400 py-7 transition duration-300 ease-in-out" onclick="navigate('about')">About</a>
+                    <a href="#project" class="nav-link text-gray-300 hover:text-teal-400 py-7 transition duration-300 ease-in-out" onclick="navigate('project')">Project</a>
+                    <a href="#contact" class="nav-link text-gray-300 hover:text-teal-400 py-7 transition duration-300 ease-in-out" onclick="navigate('contact')">Contact</a>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Konten Utama -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+
+        <!-- 1. Halaman HOME -->
+        <section id="home" class="page-section active">
+            <!-- Kartu Home - Lebih gelap dan elegan -->
+            <div class="text-center bg-gray-800 p-10 sm:p-16 rounded-3xl shadow-2xl shadow-black/50 border border-gray-700">
+                <div class="mb-8">
+                    <!-- Foto Profil Mahasiswa -->
+                    <img src="https://raw.githubusercontent.com/fazrafatimah5-ui/fazra1.github.io/eebfe6a1556b741b1d2ce2f70613dee0bca3ec1f/12.jpg" alt="Foto Profil Fazra Fatimah Azahra" class="w-44 h-44 rounded-full mx-auto object-cover border-4 border-teal-400 shadow-xl transition transform hover:scale-105 duration-500">
+                </div>
+                <h1 class="text-5xl sm:text-6xl font-extrabold text-white mb-4 leading-tight">
+                    Hello, Saya <span class="text-teal-400">Inovator Digital</span>.
+                </h1>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">
+                    Saya Fazra Fatimah Azahra, dan saya adalah seorang mahasiswa Manajemen Informatika yang sangat antusias.
+                </p>
+                <p class="text-xl text-gray-400 max-w-3xl mx-auto mb-8">
+                    Misi utama saya adalah merancang dan mengimplementasikan solusi digital yang tidak hanya canggih dalam kode (back-end) dan desain (front-end), tetapi juga memberikan nilai bisnis yang nyata. Saya percaya bahwa alignment antara strategi perusahaan dan sistem informasi yang efektif adalah kunci untuk inovasi yang berkelanjutan.
+                </p>
+                <div class="mt-8">
+                    <a href="#project" onclick="navigate('project')" class="bg-teal-500 text-gray-900 font-bold text-lg py-3 px-10 rounded-full hover:bg-teal-400 transition duration-300 shadow-lg shadow-teal-500/30 uppercase tracking-widest">
+                        Jelajahi Karya
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Halaman ABOUT -->
+        <section id="about" class="page-section">
+            <div class="bg-gray-800 p-10 sm:p-16 rounded-3xl shadow-2xl shadow-black/50 border border-gray-700">
+                <h2 class="text-4xl font-bold text-white mb-8 border-b border-teal-400/50 pb-4">Tentang Saya</h2>
+
+                <!-- Profil -->
+                <div class="mb-12">
+                    <h3 class="text-2xl font-semibold text-teal-400 mb-4">Latar Belakang & Filosofi</h3>
+                    <p class="text-gray-400 leading-relaxed text-lg">
+                        Saya Fazra Fatimah Azahra, mahasiswa Manajemen Informatika tahun 2024 di STMIK IKMI CIREBON. Di luar kampus, saya aktif berpartisipasi dalam hackathon dan proyek open-source. Saya didorong oleh rasa ingin tahu dan komitmen untuk menghasilkan kualitas terbaik di setiap detail.
+                    </p>
+                    <ul class="mt-6 space-y-3 text-gray-400">
+                        <li><span class="font-medium text-teal-300">Lokasi:</span> CIAMIS</li>
+                        <li><span class="font-medium text-teal-300">Status:</span> Mahasiswa Aktif, Pencari Solusi</li>
+                        <li><span class="font-medium text-teal-300">Email:</span> fazrafatimah5@gmail.com</li>
+                    </ul>
+                </div>
+
+                <!-- Skill -->
+                <div>
+                    <h3 class="text-2xl font-semibold text-teal-400 mb-5">Keahlian Inti</h3>
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <!-- Skill Item 1 -->
+                        <div class="bg-gray-700 p-5 rounded-xl text-center shadow-lg hover:shadow-teal-500/20 transition transform hover:-translate-y-1">
+                            <span class="text-4xl mb-2 block text-teal-300">🌐</span>
+                            <p class="font-medium text-white">Web Semantik</p>
+                            <p class="text-xs text-gray-400">HTML5 / CSS3</p>
+                        </div>
+                        <!-- Skill Item 2 -->
+                        <div class="bg-gray-700 p-5 rounded-xl text-center shadow-lg hover:shadow-teal-500/20 transition transform hover:-translate-y-1">
+                            <span class="text-4xl mb-2 block text-teal-300">⚛️</span>
+                            <p class="font-medium text-white">JavaScript & Logic</p>
+                            <p class="text-xs text-gray-400">ES6+</p>
+                        </div>
+                        <!-- Skill Item 3 -->
+                        <div class="bg-gray-700 p-5 rounded-xl text-center shadow-lg hover:shadow-teal-500/20 transition transform hover:-translate-y-1">
+                            <span class="text-4xl mb-2 block text-teal-300">✨</span>
+                            <p class="font-medium text-white">UI/UX Craft</p>
+                            <p class="text-xs text-gray-400">Figma / Sketch</p>
+                        </div>
+                        <!-- Skill Item 4 -->
+                        <div class="bg-gray-700 p-5 rounded-xl text-center shadow-lg hover:shadow-teal-500/20 transition transform hover:-translate-y-1">
+                            <span class="text-4xl mb-2 block text-teal-300">💡</span>
+                            <p class="font-medium text-white">Pemecahan Masalah</p>
+                            <p class="text-xs text-gray-400">Analytical Thinking</p>
+                        </div>
+                        <!-- Tambahkan skill lain sesuai kebutuhan -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Halaman PROJECT -->
+        <section id="project" class="page-section">
+            <div class="bg-gray-800 p-10 sm:p-16 rounded-3xl shadow-2xl shadow-black/50 border border-gray-700">
+                <h2 class="text-4xl font-bold text-white mb-10 border-b border-teal-400/50 pb-4">Karya Pilihan</h2>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    
+                    <!-- Contoh Project 1 - Sertifikasi -->
+                    <div class="bg-gray-700 rounded-2xl shadow-xl overflow-hidden transition transform hover:scale-[1.03] duration-300 border border-gray-600">
+                        <!-- Placeholder Gambar -->
+                        <img src="https://raw.githubusercontent.com/fazrafatimah5-ui/fazra1.github.io/5cd7faa30e687571b58255988485b2155fdc205a/jjpg2.jpg" alt="" class="w-full h-48 object-cover opacity-80 hover:opacity-100 transition duration-300">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Sistem Informasi Kampus</h3>
+                            <p class="text-gray-400 text-sm mb-4">
+                                Bagian ini menampilkan daftar pengakuan resmi dan pelatihan yang telah saya peroleh, membuktikan validasi kompetensi saya dalam berbagai bidang teknis dan profesional. Setiap sertifikat merefleksikan komitmen saya terhadap pembelajaran berkelanjutan dan standar industri.
+                            </p>
+                            <span class="inline-block bg-teal-800 text-teal-200 text-xs font-semibold px-3 py-1 rounded-full">Fullstack</span>
+                        </div>
+                    </div>
+                    <!-- Project 2: Azahra Shop -->
+                    <div class="bg-gray-700 rounded-2xl shadow-xl overflow-hidden transition transform hover:scale-[1.03] duration-300 border border-gray-600">
+                        <!-- Gambar Placeholder yang lebih relevan untuk toko online -->
+                        <img src="https://raw.githubusercontent.com/fazrafatimah5-ui/fazra1.github.io/9f22658bf35e842f854e325f8807c6160ed0386c/logoazahra.jpg" alt="" class="w-full h-48 object-cover opacity-80 hover:opacity-100 transition duration-300">
+                        <div class="p-6">
+                            <h3 class="text-xl font-bold text-white mb-2">Azahra Shop - Web E-Commerce</h3>
+                            <p class="text-gray-400 text-sm mb-4">
+                                Implementasi desain UI/UX untuk toko online (e-commerce) menggunakan HTML dan Tailwind CSS, fokus pada pengalaman belanja yang mulus.
+                            </p>
+                            <span class="inline-block bg-purple-800 text-purple-200 text-xs font-semibold px-3 py-1 rounded-full">Web Design</span>
+                            <span class="inline-block bg-teal-800 text-teal-200 text-xs font-semibold px-3 py-1 rounded-full ml-2">Tailwind CSS</span>
+                            
+                            <!-- Tautan Langsung ke Project Asli -->
+                            <a href="https://fazrafatimah5-ui.github.io/azahrashop.html" target="_blank" rel="noopener noreferrer" class="mt-3 block text-teal-400 hover:text-teal-300 font-medium transition duration-300">Kunjungi Live Demo &rarr;</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Halaman CONTACT -->
+        <section id="contact" class="page-section">
+            <div class="bg-gray-800 p-10 sm:p-16 rounded-3xl shadow-2xl shadow-black/50 max-w-lg mx-auto border border-gray-700">
+                <h2 class="text-4xl font-bold text-white mb-6 border-b border-teal-400/50 pb-4 text-center">Inisiasi Kolaborasi</h2>
+                <p class="text-center text-gray-400 mb-8 text-lg">
+                    Hubungi saya untuk proyek, magang, atau sekadar diskusi teknologi. (Pesan akan dikirim langsung via WhatsApp)
+                </p>
+                <form id="contact-form" onsubmit="handleFormSubmit(event)">
+                    <div class="mb-5">
+                        <label for="name" class="block text-teal-400 text-sm font-semibold mb-2">Nama Lengkap</label>
+                        <input type="text" id="name" name="name" class="form-input" required placeholder="Nama Anda">
+                    </div>
+                    <div class="mb-5">
+                        <label for="email" class="block text-teal-400 text-sm font-semibold mb-2">Email Anda</label>
+                        <input type="email" id="email" name="email" class="form-input" required placeholder="Alamat email Anda">
+                    </div>
+                    <!-- FIELD BARU UNTUK ALAMAT -->
+                    <div class="mb-5">
+                        <label for="address" class="block text-teal-400 text-sm font-semibold mb-2">Alamat Lengkap</label>
+                        <textarea id="address" name="address" rows="2" class="form-input" required placeholder="Alamat Anda saat ini atau alamat pengiriman"></textarea>
+                    </div>
+                    <!-- END FIELD BARU -->
+                    <div class="mb-5">
+                        <label for="subject" class="block text-teal-400 text-sm font-semibold mb-2">Subjek</label>
+                        <input type="text" id="subject" name="subject" class="form-input" required placeholder="Topik atau subjek pesan">
+                    </div>
+                    <div class="mb-8">
+                        <label for="message" class="block text-teal-400 text-sm font-semibold mb-2">Pesan Anda</label>
+                        <textarea id="message" name="message" rows="4" class="form-input" required placeholder="Tulis pesan Anda di sini..."></textarea>
+                    </div>
+                    
+                    <!-- Tombol dengan aksen Teal dan efek hover yang dinamis -->
+                    <button type="submit" class="w-full bg-teal-500 text-gray-900 font-bold py-3 px-4 rounded-xl hover:bg-teal-400 transition duration-300 shadow-lg shadow-teal-500/50 flex items-center justify-center space-x-2 transform hover:scale-[1.01]">
+                        <!-- Icon WhatsApp (inline SVG) -->
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2C6.477 2 2 6.477 2 12c0 3.86 2.098 7.214 5.255 8.904l.354-.256c.304-.22.404-.616.257-.968L7.3 18.66c-.326-.744-.31-1.587.042-2.31l.056-.118c.243-.51.487-1.02.662-1.554.17-.514.24-1.077.206-1.637l-.023-.42c-.035-.584-.047-1.173.04-1.75.11-.715.394-1.385.82-1.996.425-.61.947-1.132 1.558-1.557.61-.426 1.28-.71 1.995-.82.577-.086 1.166-.075 1.749.04l.42.023c.56.034 1.123-.036 1.637-.206 1.13-.377 2.083-.98 2.89-1.844.808-.865 1.442-1.92 1.776-3.132l.023-.086c.094-.326.046-.688-.135-1.002-.18-.314-.492-.51-.83-.564-.338-.054-.694-.02-1.007.126-.312.146-.51.458-.564.819-.054.36-.02 2.766-.02 2.766zM17.5 12.8c.033.56-.037 1.123-.207 1.637-.17.514-.414 1.024-.66 1.554l-.056.118c-.352.723-.336 1.566.042 2.31l.354.795c.147.336.047.732-.257.951-.184.133-.385.197-.585.197-.588 0-1.066-.478-1.066-1.066 0-.588.478-1.066 1.066-1.066h.001c.477 0 .895.326 1.026.786l.03.11c.214.795.006 1.657-.52 2.31a9.985 9.985 0 0 1-5.61 1.916c-.006 0-.012 0-.018 0-5.522 0-10-4.477-10-10S6.477 2 12 2s10 4.477 10 10c0 .76-.08 1.498-.232 2.213-.153.715-.365 1.405-.635 2.067-.27.662-.59 1.29-.958 1.884l-.183.275c-.29.45-.63.873-.997 1.268z"/>
+                        </svg>
+                        <span>Kirim Pesan Cepat</span>
+                    </button>
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer - Tema Gelap Konsisten -->
+    <footer class="bg-gray-900 text-gray-400 py-6 mt-16 border-t border-teal-400/20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm">
+            <p>&copy; 2025 Portofolio Mahasiswa.</p>
+        </div>
+    </footer>
+
+    <!-- MODAL NOTIFIKASI PROJECT -->
+    <!-- Modal ini muncul hanya untuk link placeholder yang belum ada URL aslinya -->
+    <div id="project-modal" class="modal-overlay" onclick="closeModal()">
+        <div class="modal-content bg-gray-700 p-8 rounded-xl shadow-2xl max-w-sm w-full mx-4" onclick="event.stopPropagation()">
+            <div class="text-center">
+                <svg class="w-12 h-12 mx-auto mb-4 text-teal-400" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                <h3 id="modal-title" class="text-2xl font-bold text-white mb-3">Tautan Placeholder Berfungsi!</h3>
+                <p class="text-gray-300 mb-6">
+                    Aksi untuk **"<span id="project-name" class="font-semibold text-teal-400">...</span>"** berhasil dipicu.
+                </p>
+                <p class="text-sm text-gray-400 mb-6 border-t border-gray-600 pt-4">
+                    Tautan ini belum memiliki URL proyek asli. **Pastikan Anda mengganti `href="javascript:void(0)"` dengan tautan GitHub/Figma/Drive proyek Anda.**
+                </p>
+                <button onclick="closeModal()" class="bg-teal-500 text-gray-900 font-bold py-2 px-6 rounded-lg hover:bg-teal-400 transition duration-300 w-full">
+                    Oke, Mengerti
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- END MODAL -->
+
+    <script>
+        // --- Logika Navigasi dan SPA Sederhana ---
+        const pageSections = document.querySelectorAll('.page-section');
+        const navLinks = document.querySelectorAll('.nav-link');
+        const defaultPage = 'home';
+
+        /**
+         * Menampilkan bagian halaman yang diminta dan memperbarui tautan navigasi.
+         * @param {string} targetId ID dari bagian halaman yang akan ditampilkan (misal: 'home', 'about').
+         */
+        function navigate(targetId) {
+            // Sembunyikan semua bagian
+            pageSections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Tampilkan bagian yang dituju
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // Perbarui status aktif pada tautan navigasi
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${targetId}`) {
+                    link.classList.add('active');
+                }
+            });
+
+            // Perbarui hash URL
+            history.pushState(null, '', `#${targetId}`);
+        }
+
+        /**
+         * Menangani navigasi awal saat halaman dimuat atau melalui hash URL.
+         */
+        function initialNavigation() {
+            const hash = window.location.hash.substring(1);
+            const targetId = hash || defaultPage;
+            navigate(targetId);
+        }
+
+        // Jalankan navigasi awal saat DOM siap
+        document.addEventListener('DOMContentLoaded', initialNavigation);
+
+        // Menangani perubahan hash (misalnya, jika pengguna menekan tombol Back/Forward)
+        window.addEventListener('hashchange', initialNavigation);
+
+
+        // --- Logika Formulir Kontak (Diubah ke WhatsApp) ---
+        const contactForm = document.getElementById('contact-form');
+
+        /**
+         * Menangani pengiriman formulir dan mengarahkan ke WhatsApp.
+         * Pesan pengguna akan dijadikan konten utama di WhatsApp.
+         * @param {Event} event Objek event submit.
+         */
+        function handleFormSubmit(event) {
+            event.preventDefault(); // Mencegah pengiriman formulir standar
+
+            // ** ⚠️ GANTI NOMOR INI DENGAN NOMOR WHATSAPP ANDA (Format Internasional, misal: 6281234567890) ⚠️ **
+            // Nomor asli: 0821-2159-8276. Dikonversi ke format internasional tanpa tanda hubung dan dimulai dengan 62.
+            const phoneNumber = '6282121598276'; 
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const address = document.getElementById('address').value; // Ambil nilai Alamat
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Membuat Teks Pesan Otomatis dengan Format RAPI (Menggunakan \n untuk baris baru)
+            const fullMessage = `*PESAN MASUK DARI PORTOFOLIO WEB* \n\n` +
+                                `*Kepada Fazra: Ada permintaan kontak baru.* \n\n` +
+                                `--- DETAIL --- \n` +
+                                `*Nama*: ${name} \n` +
+                                `*Email*: ${email} \n` +
+                                `*Alamat *: ${address} \n` + // Tambahkan Alamat ke pesan
+                                `*Subjek Pesan*: ${subject} \n` +
+                                `-------------------------------------- \n\n` +
+                                `*Isi Pesan* \n` +
+                                `${message} \n\n` +
+                                `--- End of Message ---`;
+                                
+            // 2. Meng-encode pesan untuk URL
+            const encodedMessage = encodeURIComponent(fullMessage);
+
+            // 3. Membuat URL WhatsApp
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+            // Mengalihkan pengguna ke WhatsApp di tab baru
+            window.open(whatsappUrl, '_blank');
+
+            // Reset formulir setelah pengalihan
+            contactForm.reset();
+        }
+        
+        // --- Logika Modal Notifikasi Proyek ---
+        const projectModal = document.getElementById('project-modal');
+        const projectNameElement = document.getElementById('project-name');
+
+        /**
+         * Menampilkan modal dengan nama proyek yang diklik.
+         * @param {string} projectName Nama proyek yang diklik.
+         */
+        function showProjectDetail(projectName) {
+            projectNameElement.textContent = projectName;
+            projectModal.classList.add('open');
+            // Menambahkan blur pada body (opsional, untuk visual)
+            document.body.classList.add('overflow-hidden');
+        }
+
+        /**
+         * Menyembunyikan modal.
+         */
+        function closeModal() {
+            projectModal.classList.remove('open');
+            document.body.classList.remove('overflow-hidden');
+        }
+
+    </script>
+
+</body>
+</html>
