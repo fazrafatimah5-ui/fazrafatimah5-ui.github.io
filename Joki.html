@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Joki Tugas - Jasa Layanan Elegant & Playful</title>
+    <!-- Memuat Tailwind CSS & Google Fonts (Poppins for professionalism) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            /* Gradient latar belakang yang lembut dan ceria */
+            background: linear-gradient(135deg, #f0f8ff 0%, #e8f9ff 100%); 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .poster-container {
+            max-width: 1000px;
+            width: 100%;
+            background-color: #ffffff;
+            border-radius: 25px; /* Sedikit lebih bulat */
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15); /* Shadow lebih lembut */
+            padding: 30px;
+            position: relative; 
+            overflow: hidden; 
+            border: 4px solid #7c3aed; /* Border ungu yang lebih menonjol */
+        }
+        
+        /* --- Dekorasi Lucu & Floating Emojis --- */
+        .decor-emoji {
+            position: absolute;
+            opacity: 0.5;
+            font-size: 2.5rem;
+            animation: float 5s ease-in-out infinite alternate;
+            z-index: 5;
+        }
+
+        .decor-emoji-1 { top: 5%; left: 5%; transform: rotate(-15deg); animation-delay: 0s; }
+        .decor-emoji-2 { top: 15%; right: 3%; transform: rotate(20deg); animation-delay: 1.5s; font-size: 2rem; }
+        .decor-emoji-3 { bottom: 10%; left: 10%; transform: rotate(10deg); animation-delay: 3s; font-size: 3rem; }
+        .decor-emoji-4 { bottom: 5%; right: 15%; transform: rotate(-10deg); animation-delay: 4.5s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(5deg); }
+            100% { transform: translateY(-10px) rotate(-5deg); }
+        }
+
+        /* --- Efek Visual --- */
+        .header-strip {
+            background: linear-gradient(90deg, #9333ea 0%, #a855f7 100%); /* Ungu yang lebih cerah */
+            color: white;
+            padding: 12px 20px;
+            border-radius: 20px; 
+            font-weight: 800;
+            letter-spacing: 1px;
+            box-shadow: 0 8px 20px rgba(147, 51, 234, 0.4);
+            transform: translateY(-50%);
+            margin-top: 30px;
+        }
+
+        .service-card {
+            background-color: #fefeff; 
+            border: 2px solid #e0e7ff; /* Border biru muda lembut */
+            border-radius: 18px;
+            padding: 25px; /* Padding lebih besar */
+            transition: all 0.3s ease;
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+            display: flex; /* Menggunakan flexbox untuk tata letak internal */
+            flex-direction: column;
+            justify-content: space-between; /* Mendorong tombol ke bawah */
+        }
+        .service-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 12px 25px rgba(124, 58, 237, 0.3); /* Shadow ungu saat hover */
+        }
+
+        /* Merapikan format list harga */
+        .price-list p {
+            margin-bottom: 5px;
+            padding: 6px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px dashed #f3f3f3; /* Garis putus-putus sangat tipis */
+            font-size: 1rem;
+        }
+        .price-list p:last-child {
+            border-bottom: none;
+        }
+        
+        .icon-title {
+            color: #7c3aed; /* Ungu cerah */
+            font-size: 2rem; /* Ikon lebih besar */
+            margin-right: 10px;
+        }
+        
+        /* Gaya Tautan WA yang Elegant dan Profesional (Main CTA) */
+        .whatsapp-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 15px 35px;
+            background-color: #25d366; 
+            color: white;
+            font-size: 1.6rem;
+            font-weight: 700;
+            border-radius: 12px;
+            text-decoration: none;
+            transition: all 0.2s ease-in-out;
+            box-shadow: 0 6px 18px rgba(37, 211, 102, 0.6); /* Shadow hijau lebih kuat */
+        }
+        .whatsapp-link:hover {
+            background-color: #128c7e;
+            box-shadow: 0 10px 25px rgba(18, 140, 126, 0.7);
+            transform: scale(1.05);
+        }
+
+        /* Gaya Tombol Pesan Layanan (Per Card) */
+        .service-cta {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 10px 0;
+            background-color: #7c3aed; /* Ungu gelap */
+            color: white;
+            text-align: center;
+            font-weight: 700;
+            border-radius: 8px;
+            transition: background-color 0.2s;
+            box-shadow: 0 3px 0 #5b21aa;
+            text-decoration: none;
+        }
+        .service-cta:hover {
+            background-color: #5b21aa;
+            box-shadow: 0 2px 0 #4c1d95;
+            transform: translateY(1px);
+        }
+        
+        /* Gaya judul sub-kategori yang bersih */
+        .sub-category-title {
+            background-color: #fffae8; /* Kuning muda sangat lembut */
+            color: #d97706; 
+            padding: 8px 15px;
+            border-radius: 10px;
+            font-size: 1.05rem;
+            margin-top: 15px;
+            margin-bottom: 10px;
+            text-align: center;
+            font-weight: 600;
+            border: 2px solid #fcd34d;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Dekorasi Lucu & Playful yang Melayang (Floating Emojis) -->
+<span class="decor-emoji decor-emoji-1">✏️</span>
+<span class="decor-emoji decor-emoji-2">🍎</span>
+<span class="decor-emoji decor-emoji-3">📐</span>
+<span class="decor-emoji decor-emoji-4">🚀</span>
+
+<div class="poster-container mx-auto">
+    
+    <!-- Header Utama yang Elegant -->
+    <header class="text-center mb-12">
+        <h1 class="text-5xl font-extrabold text-gray-900 mt-4">JASA LAYANAN TUGAS & KREATIF</h1>
+        <p class="text-xl font-medium text-gray-600 mt-2">Fokus Utama: SD - SMA | Solusi Digital Cepat & Rapi</p>
+        
+        <!-- Strip Penting dengan Kontras Tinggi -->
+        <div class="header-strip mx-auto w-3/4 md:w-1/2 mt-8">
+            <p class="text-center text-sm">
+                SEMUA MATERI TUGAS WAJIB DISEDIAKAN OLEH CUSTOMER
+            </p>
+        </div>
+    </header>
+
+    <!-- Grid Layanan dalam 3 Card -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8"> <!-- Spasi antar kartu diperbesar -->
+
+        <!-- Card 1: Jasa Tugas Sekolah & Essay -->
+        <div class="service-card price-list">
+            <div>
+                <h3 class="text-2xl font-bold mb-4 flex items-center text-purple-700">
+                    <span class="icon-title">📚</span> PENYELESAIAN TUGAS 
+                </h3>
+                <p class="font-bold text-center text-red-600 mb-3 text-sm">(SD, SMP, & SMA - Semua Mata Pelajaran)</p>
+                
+                <p>Soal Pilihan Ganda / Isian <span class="text-purple-600 font-extrabold">Rp1k/soal</span></p>
+                <p>Soal Hitungan Sederhana <span class="text-purple-600 font-extrabold">Rp1k/soal</span></p>
+                <p>Rangkuman / Ringkasan Materi <span class="text-purple-600 font-extrabold">Rp1k/hal</span></p>
+                <p>Essay / Karya Ilmiah
+                    <span class="text-red-600 font-extrabold text-sm">Rp3k - Rp10k/soal</span>
+                </p>
+                <p class="text-gray-500 italic text-xs border-b-0">
+                    (Biaya disesuaikan dengan tingkat kesulitan)
+                </p>
+            </div>
+            <!-- Tombol Pesan Otomatis untuk Layanan Ini -->
+            <a href="https://wa.me/6285129910165?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20PENYELESAIAN%20TUGAS.%20Mohon%20info%20untuk%20prosedur%20pemesanan.%0A%0ADetail%20Tugas%3A%0ANama%3A%20%5BNama%20Anda%5D%0ALayanan%3A%20PENYELESAIAN%20TUGAS%0AMateri%3A%20%5BMata%20Pelajaran%2FTopik%20Tugas%5D%0ADeadline%3A%20%5BTanggal%20%26%20Waktu%20Deadline%5D%0A%0ATerima%20kasih." target="_blank" class="service-cta">
+                Pesan Layanan Ini 🚀
+            </a>
+        </div>
+        
+        <!-- Card 2: Jasa Makalah, PPT & Desain -->
+        <div class="service-card price-list">
+            <div>
+                <h3 class="text-2xl font-bold mb-4 flex items-center text-purple-700">
+                    <span class="icon-title">✨</span> MAKALAH, PRESENTASI & DESAIN
+                </h3>
+                <p class="text-gray-500 text-sm mb-3">(Layanan Digital & Visual)</p>
+
+                <p>Pembuatan Makalah / Laporan <span class="text-purple-600 font-extrabold">Rp1k/hal</span></p>
+                <p>Pembuatan Presentasi PowerPoint (.pptx) <span class="text-purple-600 font-extrabold">Rp2k/slide</span></p>
+                
+                <div class="sub-category-title">JASA DESAIN KREATIF</div>
+                <p>Desain Poster/Infografis Sederhana 
+                    <span class="text-red-600 font-extrabold text-sm">Rp10k - Rp20k</span>
+                </p>
+                <p>Desain Logo/Banner/Header 
+                    <span class="text-red-600 font-extrabold text-sm">Rp20k - Rp30k</span>
+                </p>
+                
+                <p class="pt-2 border-t mt-2">Analisis Excel Statistik/Hitungan 
+                    <span class="text-red-600 font-extrabold text-sm">Rp5k - Rp20k/tugas</span>
+                </p>
+                <p class="text-gray-500 italic text-xs border-b-0">
+                    (Tergantung kerumitan instruksi dan data)
+                </p>
+            </div>
+            <!-- Tombol Pesan Otomatis untuk Layanan Ini -->
+            <a href="https://wa.me/6285129910165?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20MAKALAH%2C%20PRESENTASI%20%26%20DESAIN.%20Mohon%20info%20untuk%20prosedur%20pemesanan.%0A%0ADetail%20Tugas%3A%0ANama%3A%20%5BNama%20Anda%5D%0ALayanan%3A%20MAKALAH%2C%20PRESENTASI%20%26%20DESAIN%0AMateri%3A%20%5BJudul%20Makalah%2FJenis%20Desain%5D%0ADeadline%3A%20%5BTanggal%20%26%20Waktu%20Deadline%5D%0A%0ATerima%20kasih." target="_blank" class="service-cta">
+                Pesan Layanan Ini 🚀
+            </a>
+        </div>
+
+        <!-- Card 3: Jasa Translate & Bimbel -->
+        <div class="service-card price-list">
+            <div>
+                <h3 class="text-2xl font-bold mb-4 flex items-center text-purple-700">
+                    <span class="icon-title">🧠</span> TRANSLATE PROFESIONAL & BIMBINGAN
+                </h3>
+                <p class="text-gray-500 text-sm mb-3">(Solusi Peningkatan Nilai & Pemahaman)</p>
+                
+                <div class="sub-category-title">JASA TERJEMAHAN (TRANSLATE)</div>
+                <p>Terjemah Teks (Indo - Eng / Eng - Indo) <span class="text-purple-600 font-extrabold">Rp5k/hal</span></p>
+                
+                <div class="sub-category-title">BIMBEL (PRIVATE ONLINE)</div>
+                <p>Penjelasan Soal (Via Chat WhatsApp) <span class="text-purple-600 font-extrabold">Rp5k/soal</span></p>
+                <p>Private 1 Materi (Via Video Penjelasan) <span class="text-purple-600 font-extrabold">Rp20k/jam</span></p>
+                <p>Private 1 Materi (Google Meet/Zoom) 
+                    <span class="text-red-600 font-extrabold text-sm">Rp50k/jam</span>
+                </p>
+                <p class="text-gray-500 italic text-xs border-b-0">
+                    (Jadwal dan materi dapat disesuaikan)
+                </p>
+            </div>
+            <!-- Tombol Pesan Otomatis untuk Layanan Ini -->
+            <a href="https://wa.me/6285129910165?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20TRANSLATE%20PROFESIONAL%20%26%20BIMBINGAN.%20Mohon%20info%20untuk%20prosedur%20pemesanan.%0A%0ADetail%20Layanan%3A%0ANama%3A%20%5BNama%20Anda%5D%0ALayanan%3A%20TRANSLATE%20PROFESIONAL%20%26%20BIMBINGAN%0AMateri%3A%20%5BJenis%20Bimbel%2FTeks%20Terjemahan%5D%0ADeadline%3A%20%5BTanggal%20%26%20Waktu%20Kebutuhan%5D%0A%0ATerima%20kasih." target="_blank" class="service-cta">
+                Pesan Layanan Ini 🚀
+            </a>
+        </div>
+    </div>
+    
+    <!-- Call to Action (CTA) yang Menarik -->
+    <section class="text-center mt-12 p-8 bg-indigo-50 rounded-xl border-4 border-indigo-300 shadow-lg">
+        
+        <div class="text-2xl font-extrabold text-red-600 uppercase mb-4">
+            ⚠️ PERHATIAN: HANYA MELAYANI TUGAS DALAM FORMAT DIGITAL! ⚠️
+        </div>
+        
+        <p class="text-xl font-bold text-gray-700 mb-6 tracking-wide">
+            Hubungi kami sekarang untuk layanan cepat, rapi, dan tepat waktu.
+        </p>
+
+        <!-- Bagian Kontak WA yang Paling Menonjol (General Query) -->
+        <a href="https://wa.me/6285129910165?text=Halo%2C%20saya%20tertarik%20dengan%20layanan%20jasa%20tugas%20Anda%20dan%20ingin%20bertanya%20lebih%20lanjut.%0A%0ADetail%20Pertanyaan%3A%0ANama%3A%20%5BNama%20Anda%5D%0ALayanan%3A%20%5BUmum%20%2F%20Sebutkan%20Layanan%5D%0AMateri%3A%20%5BTopik%20Materi%5D%0ADeadline%3A%20%5BTanggal%20%26%20Waktu%20Deadline%5D%0A%0ATerima%20kasih." target="_blank" class="whatsapp-link">
+            <span class="inline-block mr-3">📞</span> CHAT WHATSAPP: 0851-2991-0165
+        </a>
+    </section>
+
+</div>
+
+</body>
+</html>
